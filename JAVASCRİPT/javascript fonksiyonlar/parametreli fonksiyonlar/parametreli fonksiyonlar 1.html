@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parametreli Fonksiyonlar</title>
+	<style type="text/css">
+		body{background-color:gray; color:white;font-weight:bold}
+		#cerceve{background-color:orange; width:100px; height:100px}
+	</style>
+	<script type="text/javascript">
+		function kenarYuvarla(derece){
+			document.getElementById("cerceve").style.borderRadius=derece;
+		}
+	</script>
+</head>
+<body>
+<div id="cerceve"></div>
+<form>
+	<input type="radio" name="secim" onclick="kenarYuvarla('0px')" value="0">
+	<label for="male">0 piksel</label><br>
+	<input type="radio" name="secim" onclick="kenarYuvarla('10px')" value="10">
+	<label for="male">10 piksel</label><br>
+	<input type="radio" name="secim" onclick="kenarYuvarla('25px')" value="25">
+	<label for="male">25 piksel</label><br>
+	<input type="radio" name="secim" onclick="kenarYuvarla('50px')" value="50">
+	<label for="male">50 piksel</label><br>
+</form>
+</body>
+</html>

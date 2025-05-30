@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basit Hesap Makinesi</title>
+    <style>
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+        .calculator {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+input, select, button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#sonuc {
+    font-weight: bold;
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+<h1>HESAP MAKİNESİ</h1>
+<div class="calculator">
+    <input type="number" id="sayi1" placeholder="Sayı 1">
+    <input type="number" id="sayi2" placeholder="Sayı 2">
+    <select id="islem">
+        <option value="toplama">Toplama</option>
+        <option value="cikarma">Çıkarma</option>
+        <option value="carpma">Çarpma</option>
+        <option value="bolme">Bölme</option>
+    </select>
+    <button id="hesapla">Hesapla</button>
+    <div id="sonuc">Sonuç: </div>
+</div>
+
+<script>
+    const sayi1Input = document.getElementById('sayi1');
+const sayi2Input = document.getElementById('sayi2');
+const islemSelect = document.getElementById('islem');
+const hesaplaButton = document.getElementById('hesapla');
+const sonucDiv = document.getElementById('sonuc');
+
+hesaplaButton.addEventListener('click', function() {
+    const sayi1 = parseFloat(sayi1Input.value);
+    const sayi2 = parseFloat(sayi2Input.value);
+    const islem = islemSelect.value;
+    let sonuc;
+
+    if (isNaN(sayi1) || isNaN(sayi2)) {
+        sonucDiv.textContent = "Sonuç: Lütfen geçerli sayılar girin.";
+        return;
+    }
+
+    switch (islem) {
+        case 'toplama':
+            sonuc = sayi1 + sayi2;
+            break;
+        case 'cikarma':
+            sonuc = sayi1 - sayi2;
+            break;
+        case 'carpma':
+            sonuc = sayi1 * sayi2;
+            break;
+        case 'bolme':
+            if (sayi2 === 0) {
+                sonucDiv.textContent = "Sonuç: Sıfıra bölme hatası!";
+                return;
+            }
+            sonuc = sayi1 / sayi2;
+            break;
+    }
+
+    sonucDiv.textContent = "Sonuç: " + sonuc;
+});
+</script>
+</body>
+</html>

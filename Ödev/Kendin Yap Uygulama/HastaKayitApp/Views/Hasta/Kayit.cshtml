@@ -1,0 +1,33 @@
+@model HastaKayitApp.Models.Hasta
+
+<h2>Hasta Kayıt Formu</h2><br>
+
+<!-- Form: Kullanıcıdan bilgi alınır ve POST metoduyla gönderilir -->
+<form asp-action="Kayit" method="post">
+    <div>
+        <label>Ad:</label>
+        <!-- Ad input'u modeldeki Ad alanına bağlı -->
+        <input asp-for="Ad" />
+    </div><br>
+    <div>
+        <label>Soyad:</label>
+        <!-- Soyad input'u modeldeki Soyad alanına bağlı -->
+        <input asp-for="Soyad" />
+    </div><br>
+    <div>
+        <label>Doğum Tarihi:</label>
+        <!-- Doğum tarihi için tarih input tipi -->
+        <input asp-for="DogumTarihi" type="date" />
+    </div><br>
+    <div>
+        <label>Cinsiyet:</label>
+        <!-- Dropdown menü ile cinsiyet seçimi -->
+        <select asp-for="Cinsiyet">
+            <option value="Erkek">Erkek</option>
+            <option value="Kadın">Kadın</option>
+        </select>
+    </div><br>
+
+    <!-- Formu gönderme butonu -->
+    <button type="submit">Kaydet</button>
+</form>

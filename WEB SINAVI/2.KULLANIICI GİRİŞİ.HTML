@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <style>
+        .kayit-form {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color:  #ffe4e1; /* Açık pembe arka plan */
+    border-radius: 10px; /* Köşeleri yuvarlatma */
+}
+
+h2 {
+    color: #333;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box; /* padding'in genişliğe dahil olmasını sağlar */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #dc143c; /* Koyu pembe buton rengi */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #b22222; /* Daha koyu pembe hover rengi */
+}
+    </style>
+</head>
+<body>
+
+<div class="kayit-form">
+    <h2>Kayıt Ol</h2>
+    <input type="text" id="adSoyad" placeholder="Ad Soyad">
+    <input type="email" id="eposta" placeholder="E-posta">
+    <input type="password" id="sifre" placeholder="Şifre">
+    <input type="password" id="sifreTekrar" placeholder="Şifre Tekrar">
+    <button id="gonder">Gönder</button>
+</div>
+
+<script>
+    const adSoyadInput = document.getElementById('adSoyad');
+const epostaInput = document.getElementById('eposta');
+const sifreInput = document.getElementById('sifre');
+const sifreTekrarInput = document.getElementById('sifreTekrar');
+const gonderButton = document.getElementById('gonder');
+
+gonderButton.addEventListener('click', function() {
+    const adSoyad = adSoyadInput.value;
+    const eposta = epostaInput.value;
+    const sifre = sifreInput.value;
+    const sifreTekrar = sifreTekrarInput.value;
+
+    if (sifre !== sifreTekrar) {
+        alert("Şifreler uyuşmuyor!");
+        return;
+    }
+
+    // Burada veritabanına kaydetme veya başka bir işlem yapılabilir.
+    alert("Kayıt başarılı!");
+});
+</script>
+</body>
+</html>

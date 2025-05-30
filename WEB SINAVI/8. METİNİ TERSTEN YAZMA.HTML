@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metin Ters Çevirme</title>
+    <style>
+        .ters-cevirici {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+textarea, button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#cevrilenMetin {
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+
+<div class="ters-cevirici">
+    <h1>Metin Ters Çevirici</h1>
+    <textarea id="metin" placeholder="Lütfen metin girin"></textarea>
+    <button id="tersCevir">Ters Çevir</button>
+    <p>Çevrilen Metin: <span id="cevrilenMetin"></span></p>
+</div>
+
+<script>
+    const metinTextarea = document.getElementById('metin');
+const tersCevirButton = document.getElementById('tersCevir');
+const cevrilenMetinSpan = document.getElementById('cevrilenMetin');
+
+tersCevirButton.addEventListener('click', function() {
+    const metin = metinTextarea.value;
+    const tersMetin = metin.split('').reverse().join('');
+    cevrilenMetinSpan.textContent = tersMetin;
+});
+</script>
+</body>
+</html>

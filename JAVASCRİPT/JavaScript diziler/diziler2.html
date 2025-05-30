@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Diziler 2</title>
+	<script type="text/javascript">
+		var ingilizce=["apple","bottle","computer","book","mouse","wall","pen","paper","table",];
+		var turkce=["elma","şişe","bilgisayar","kitap","fare","duvar","kalem","kağıt","masa"];
+		function cevir(){
+			var siraNo;
+			siraNo=ingilizce.indexOf(document.getElementById("arananKelime").value);
+			if(siraNo>=0){
+				document.getElementById("turkce").innerText=turkce[siraNo];
+			}
+			else{
+				alert("Bu kelime sözlükte yok");
+			}
+		}
+	</script>
+</head>
+<body>
+<div>
+	<input type="text" id="arananKelime" placeholder="İngilizce Kelime Giriniz...">
+	<input type="button" value="Çevir" onclick="cevir()">
+	<h3 id="turkce">Kelimenin Türkçe Karşılığı</h3>
+</div>
+</body>
+</html>

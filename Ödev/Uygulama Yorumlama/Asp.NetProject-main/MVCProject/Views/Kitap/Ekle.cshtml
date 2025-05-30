@@ -1,0 +1,16 @@
+@model MVCProject.Models.KitapModel
+@* Bu View, kitap ekleme formunu içerir. Model: KitapModel *@
+
+<h2>Kitap Ekle</h2>
+
+<form asp-action="Ekle" method="post">
+    <div>
+        <label>Kitap Adı:</label>
+        <input asp-for="KitapAdi" />
+    </div>
+    <div>
+        <label>Yazar:</label>
+        <input asp-for="Yazar" />
+    </div>
+    <button type="submit">Ekle</button>
+</form>

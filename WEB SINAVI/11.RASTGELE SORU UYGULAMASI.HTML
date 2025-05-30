@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toplama Oyunu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        #feedback {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .correct {
+            color: #5cb85c;
+        }
+        .incorrect {
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rastgele Soru Uygulaması</h1>
+    <h2>Toplama Oyunu</h2>
+    
+    <p>Topla: <span id="num1">62</span> + <span id="num2">2</span></p>
+    <input type="number" id="answer">
+    <button onclick="checkAnswer()">Cevabı Kontrol Et</button>
+    
+    <p id="feedback" class="correct">Tebrikler, doğru cevap!</p>
+    
+    <button onclick="newQuestion()">Yeni Soru</button>
+
+    <script>
+        let correctAnswer;
+        
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 100);
+            const num2 = Math.floor(Math.random() * 100);
+            document.getElementById('num1').textContent = num1;
+            document.getElementById('num2').textContent = num2;
+            correctAnswer = num1 + num2;
+            document.getElementById('answer').value = '';
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('feedback').className = '';
+        }
+        
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer').value);
+            const feedback = document.getElementById('feedback');
+            
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = 'Tebrikler, doğru cevap!';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = 'Yanlış cevap, tekrar deneyin.';
+                feedback.className = 'incorrect';
+            }
+        }
+        
+        function newQuestion() {
+            generateQuestion();
+        }
+        
+        // Sayfa yüklendiğinde ilk soruyu oluştur
+        window.onload = generateQuestion;
+    </script>
+</body>
+</html>

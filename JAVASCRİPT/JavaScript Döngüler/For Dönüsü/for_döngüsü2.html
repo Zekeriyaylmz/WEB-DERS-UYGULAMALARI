@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Döngüsü 2 Çarpım Tablosu</title>
+    <script type="text/javascript">
+    	function carpimTablosu() {
+    		var sayi = parseInt(document.getElementById("sayi").value);
+    		var sonuc = "";
+
+        	for (var i = 1; i <= 10; i++) {
+            	sonuc += `${sayi} x ${i} = ${sayi * i}\n`;
+        	}
+    
+    		document.getElementById("carpimSonuc").innerText = sonuc;
+		}
+    </script>
+</head>
+<body>
+    <h2>Çarpım Tablosu</h2>
+    <label for="sayi">Bir sayı giriniz:</label>
+    <input type="number" id="sayi" min="1" max="10">
+    <br><br>
+    <button onclick="carpimTablosu()">Çarp</button>
+    <pre id="carpimSonuc"></pre>
+</body>
+</html>

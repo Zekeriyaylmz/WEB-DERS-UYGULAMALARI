@@ -1,0 +1,21 @@
+@model MVCProject.Models.KullaniciModel
+@* Bu View, kullanıcı giriş ekranıdır. Model: KullaniciModel *@
+
+<h2>Giriş</h2>
+
+<form asp-action="Giris" method="post">
+    <div>
+        <label>Kullanıcı Adı:</label>
+        <input asp-for="KullaniciAdi" />
+    </div>
+    <div>
+        <label>Şifre:</label>
+        <input asp-for="Sifre" type="password" />
+    </div>
+    <button type="submit">Giriş Yap</button>
+</form>
+
+@if(ViewBag.Hata != null)
+{
+    <p style="color:red">@ViewBag.Hata</p> @* Hatalı giriş mesajı burada gösterilir *@
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parametresli Fonksiyonlar 2</title>
+</head>
+<script type="text/javascript">
+	function kareAl(a){
+		sayi=a.value;
+		sonuc=sayi*sayi;
+		document.getElementById("sonuc").innerHTML=sonuc;
+	}
+</script>
+<body>
+<form>
+	<input type="text" placeholder="Sayı Giriniz" oninput="kareAl(this)">
+
+	<p id="sonuc">0</p>
+</form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sayı Tahmin Oyunu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        #feedback {
+            margin: 10px 0;
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sayı Tahmin Oyunu</h1>
+    <p>1 ile 100 arasında bir sayı tahmin edin:</p>
+    
+    <input type="number" id="guess" min="1" max="100" value="50">
+    <button onclick="checkGuess()">Tahmin Et</button>
+    
+    <p id="feedback">Daha küçük bir sayı girin.</p>
+    <p>Sayaç: <span id="counter">0</span></p>
+
+    <script>
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let counter = 0;
+        
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guess').value);
+            counter++;
+            document.getElementById('counter').textContent = counter;
+            
+            if (guess === targetNumber) {
+                document.getElementById('feedback').textContent = "Tebrikler, doğru tahmin!";
+                document.getElementById('feedback').style.color = "#5cb85c";
+            } else if (guess < targetNumber) {
+                document.getElementById('feedback').textContent = "Daha büyük bir sayı girin.";
+            } else {
+                document.getElementById('feedback').textContent = "Daha küçük bir sayı girin.";
+            }
+        }
+    </script>
+</body>
+</html>

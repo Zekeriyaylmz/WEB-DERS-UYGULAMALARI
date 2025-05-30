@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamanlayıcı</title>
+    <style>.zamanlayici {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+input, button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#geriSayim {
+    font-size: 2em;
+    font-weight: bold;
+}</style>
+</head>
+<body>
+
+<div class="zamanlayici">
+    <h1>Zamanlayıcı</h1>
+    <input type="number" id="sure" value="30">
+    <button id="baslat">Başlat</button>
+    <button id="durdur">Durdur</button>
+    <button id="sifirla">Sıfırla</button>
+    <p id="geriSayim">30:00</p>
+</div>
+
+<script>const sureInput = document.getElementById('sure');
+const baslatButton = document.getElementById('baslat');
+const durdurButton = document.getElementById('durdur');
+const sifirlaButton = document.getElementById('sifirla');
+const geriSayimP = document.getElementById('geriSayim');
+let zamanlayici;
+let kalanSure;
+let baslangicSuresi; // Başlangıç süresini saklamak için yeni değişken
+
+function zamanlayiciBaslat() {
+    baslangicSuresi = parseInt(sureInput.value); // Başlangıç süresini al
+    kalanSure = baslangicSuresi * 60;
+    zamanlayiciGuncelle();
+    zamanlayici = setInterval(zamanlayiciGuncelle, 1000);
+    baslatButton.disabled = true;
+}
+
+function zamanlayiciDurdur() {
+    clearInterval(zamanlayici);
+    baslatButton.disabled = false;
+}
+
+function zamanlayiciSifirla() {
+    clearInterval(zamanlayici);
+    baslatButton.disabled = false;
+    kalanSure = parseInt(sureInput.value) * 60; // Input'tan süreyi al
+    zamanlayiciGuncelle();
+}
+
+function zamanlayiciGuncelle() {
+    let dakika = Math.floor(kalanSure / 60);
+    let saniye = kalanSure % 60;
+
+    dakika = dakika < 10 ? '0' + dakika : dakika;
+    saniye = saniye < 10 ? '0' + saniye : saniye;
+
+    geriSayimP.textContent = `${dakika}:${saniye}`;
+    kalanSure--;
+
+    if (kalanSure < 0) {
+        zamanlayiciDurdur();
+        alert('Zaman doldu!');
+    }
+}
+
+baslatButton.addEventListener('click', zamanlayiciBaslat);
+durdurButton.addEventListener('click', zamanlayiciDurdur);
+sifirlaButton.addEventListener('click', zamanlayiciSifirla);
+
+// Sayfa yüklendiğinde başlangıç değerini göster
+kalanSure = parseInt(sureInput.value) * 60;
+zamanlayiciGuncelle();</script>
+</body>
+</html>

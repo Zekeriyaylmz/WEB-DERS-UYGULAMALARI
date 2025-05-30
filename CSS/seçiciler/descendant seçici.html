@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<style> 
+ul a{ /* ul nin altıdaki bütün a etiketlerini etkiler */
+	text-decoration:none;
+	color:blue;
+}
+ul > li > a { /* ul nin altıdaki li nin altındaki a etiketlerini etkiler */
+	color:red;
+}
+
+</style>
+</head>
+<body>
+<div id="denemeID"> 
+<ul>
+  <li>
+     <a href="#">
+     HTML
+     </a>
+  </li>
+  <li>
+     <a class="deneme-class" href="#">
+     CSS
+     </a>
+  </li>
+  <li>
+     <a href="#">
+     JS
+     </a>
+  </li>
+  <a> Web Tasarım </a>
+</ul>
+<a> Grafik Tasarım </a>
+<p>
+    <a class="deneme-class">
+    Photoshop
+    </a>
+</p>  
+</div>
+</body>
+</html>

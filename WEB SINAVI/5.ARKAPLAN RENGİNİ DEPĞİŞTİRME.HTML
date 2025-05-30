@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renk Değiştirici</title>
+    <style>
+        .renk-degistirici {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+
+<div class="renk-degistirici">
+    <h1>Renk Değiştirici</h1>
+    <p>Şu anki renk: <span id="suankiRenk">#FFFFFF</span></p>
+    <button id="renkDegistir">Renk Değiştir</button>
+</div>
+
+<script>const renkDegistirButton = document.getElementById('renkDegistir');
+const suankiRenkSpan = document.getElementById('suankiRenk');
+
+function rastgeleRenk() {
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+renkDegistirButton.addEventListener('click', function() {
+    const yeniRenk = rastgeleRenk();
+    document.body.style.backgroundColor = yeniRenk;
+    suankiRenkSpan.textContent = yeniRenk;
+});</script>
+</body>
+</html>

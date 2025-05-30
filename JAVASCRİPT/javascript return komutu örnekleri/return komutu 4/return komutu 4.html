@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Return Komutu</title>
+	<style type="text/css">
+		body{
+			background-color: gray; 
+			font-weight: bold;}
+
+		#genelCerceve{
+			background-color:lightblue; 
+			border-radius: 10px;
+ 			width: 400px; 
+ 			height: 500px; }
+
+		#mesajGirisi{
+			background-color: white; 
+			border-radius: 10px;
+ 			width: 400px; 
+ 			height: 70px; }
+
+		#mesajGirisi > img{ 
+			width: 50px; 
+			height: 50px; 
+			float: left;
+ 			margin-left:30px;
+ 			margin-top:10px; }
+
+		#mesajGirisi>input{
+			margin-top:30px; 
+			margin-left:10px; }
+
+		#mesajKutulari{
+			background-color: white; 
+			border-radius: 3px;
+			width: 380px; 
+			height: auto; 
+			margin-left:10px; }
+
+		.gidenMesaj{
+			border-bottom:2px gray solid; }
+
+		.gidenMesaj > img{
+			width: 20px; 
+			height: 20px; 
+			margin:5px 5px 0px 5px }
+
+		#tarih{ 
+			color:gray; font-size:10px; }
+	</style>
+	<script type="text/javascript">
+
+		function mesajGonder(){
+
+ 		var mesaj=document.getElementById("mesaj").value;
+
+ 		var d = new Date();
+
+ 		var saat=d.getHours();
+
+ 		var dakika=d.getMinutes();
+
+ 		document.getElementById("mesajKutulari").innerHTML+=
+ 		"<div class='gidenMesaj'> <img src='profil foto.jpg'>"
+ 		+ mesaj +
+ 		"<span id='tarih'>"+saat+":"+dakika+"</span></div>";
+
+ 		document.getElementById("mesaj").value="";}
+
+	</script>
+</head>
+<body>
+	<div id="genelCerceve">
+		<div id="mesajGirisi">
+			<img src="profil foto.jpg">
+			<input type="text" id="mesaj" placeholder="Mesajınızı giriniz.">
+			<input type="button" value="Gönder" onclick="mesajGonder()">
+		</div>
+		<hr>
+		<div id="mesajKutulari">
+		</div>
+	</div>
+</body>
+</html>

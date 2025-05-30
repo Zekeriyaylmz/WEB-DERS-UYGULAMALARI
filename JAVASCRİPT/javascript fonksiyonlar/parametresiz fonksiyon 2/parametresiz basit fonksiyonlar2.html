@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parametresiz (Basit) Fonksiyonlar2</title>
+	<style type="text/css">
+		body{background-color: darkblue;}
+
+ 		#galeri{ position: relative; width:150px; height: 200px; margin-bottom:10px; }
+
+ 		img{ width:150px; height: 200px; position: absolute; left:0px; right: 0px; }
+	</style>
+	<script type="text/javascript">
+		function resmiGoster1(){
+ 			document.getElementById("resim1").style.zIndex=2;
+ 			document.getElementById("resim2").style.zIndex=1;
+ 			document.getElementById("resim3").style.zIndex=1;
+		}
+		function resmiGoster2(){
+ 			document.getElementById("resim1").style.zIndex=1;
+ 			document.getElementById("resim2").style.zIndex=2;
+ 			document.getElementById("resim3").style.zIndex=1;
+		}
+		function resmiGoster3(){
+ 			document.getElementById("resim1").style.zIndex=1;
+ 			document.getElementById("resim2").style.zIndex=1;
+ 			document.getElementById("resim3").style.zIndex=2;
+		}
+	</script>
+</head>
+<body>
+<div id="galeri">
+	<img src="gitar.jpg" id="resim1">
+	<img src="bas gitar.jpg" id="resim2">
+	<img src="elektro gitar.jpg" id="resim3">
+</div>
+<div>
+	<input type="button" onmousemove="resmiGoster1()" value="Resim1">
+	<input type="button" onmousemove="resmiGoster2()" value="Resim2">
+	<input type="button" onmousemove="resmiGoster3()" value="Resim3">
+</div> 
+</body>
+</html>

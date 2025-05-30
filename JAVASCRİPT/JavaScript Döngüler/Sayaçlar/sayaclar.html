@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Sayaçlar</title>
+	<script type="text/javascript">
+		function arttir(){
+			document.getElementById("sayac").innerText++;
+		}
+		function azalt(){
+			document.getElementById("sayac").innerText--;
+		}
+	</script>
+</head>
+<body>
+<div style="background-color: lightskyblue; padding: 10px;">
+	<input type="button" onclick="arttir()" value="Sayıyı Artır">
+	<h1 id="sayac">0</h1>
+	<input type="button" onclick="azalt()" value="Sayıyı Azalt">
+</div>
+</body>
+</html>

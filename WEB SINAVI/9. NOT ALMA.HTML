@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Alma Uygulaması</title>
+    <style>.not-alma {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+li button {
+    width: auto;
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}</style>
+</head>
+<body>
+
+<div class="not-alma">
+    <h1>Basit Not Alıcı</h1>
+    <textarea id="notMetni" placeholder="Notunuzu buraya yazın"></textarea>
+    <button id="notEkle">Not Ekle</button>
+    <ul id="notListesi"></ul>
+</div>
+
+<script>const notMetniTextarea = document.getElementById('notMetni');
+const notEkleButton = document.getElementById('notEkle');
+const notListesiUl = document.getElementById('notListesi');
+
+notEkleButton.addEventListener('click', function() {
+    const notMetni = notMetniTextarea.value;
+    if (notMetni.trim() !== '') {
+        const li = document.createElement('li');
+        li.textContent = notMetni;
+        const silButton = document.createElement('button');
+        silButton.textContent = 'Sil';
+        silButton.addEventListener('click', function() {
+            li.remove();
+        });
+        li.appendChild(silButton);
+        notListesiUl.appendChild(li);
+        notMetniTextarea.value = '';
+    }
+});</script>
+</body>
+</html>

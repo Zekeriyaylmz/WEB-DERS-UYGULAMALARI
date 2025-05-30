@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayaç</title>
+    <style>
+        .sayac {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#karakterSayisi {
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+
+<div class="sayac">
+    <h2>Sayaç</h2>
+    <textarea id="metinGirin" placeholder="Metin Girin"></textarea>
+    <p id="karakterSayisi"></p>
+</div>
+
+<script>
+    const metinGirinTextarea = document.getElementById('metinGirin');
+const karakterSayisiP = document.getElementById('karakterSayisi');
+const maxKarakter = 100; // İsteğe bağlı olarak maksimum karakter sayısı
+
+metinGirinTextarea.addEventListener('input', function() {
+    const metin = metinGirinTextarea.value;
+    const karakterSayisi = metin.length;
+    const kelimeSayisi = metin.split(/\s+/).filter(word => word !== '').length;
+    const kalanKarakter = maxKarakter - karakterSayisi;
+
+    karakterSayisiP.textContent = `${karakterSayisi} karakter | ${kelimeSayisi} kelime | ${kalanKarakter} karakter kaldı`;
+});
+</script>
+</body>
+</html>

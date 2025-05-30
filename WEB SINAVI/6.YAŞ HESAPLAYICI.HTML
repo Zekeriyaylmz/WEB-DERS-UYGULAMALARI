@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaş Hesaplayıcı</title>
+    <style>
+        .yas-hesaplayici {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+input, button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#sonuc {
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+
+<div class="yas-hesaplayici">
+    <h1>Yaş Hesaplayıcı</h1>
+    <input type="date" id="dogumTarihi">
+    <button id="hesapla">Hesapla</button>
+    <div id="sonuc"></div>
+</div>
+
+<script>const dogumTarihiInput = document.getElementById('dogumTarihi');
+const hesaplaButton = document.getElementById('hesapla');
+const sonucDiv = document.getElementById('sonuc');
+
+function yasHesapla(dogumTarihi) {
+    const bugun = new Date();
+    const dogumGunu = new Date(dogumTarihi);
+
+    let yas = bugun.getFullYear() - dogumGunu.getFullYear();
+    let ayFarki = bugun.getMonth() - dogumGunu.getMonth();
+    if (ayFarki < 0 || (ayFarki === 0 && bugun.getDate() < dogumGunu.getDate())) {
+        yas--;
+        ayFarki += 12; // Yaşı düşürdüğümüzde ay farkını düzeltiyoruz
+    }
+
+    let gunFarki = bugun.getDate() - dogumGunu.getDate();
+    if (gunFarki < 0) {
+        const oncekiAySonu = new Date(bugun.getFullYear(), bugun.getMonth(), 0).getDate(); // Önceki ayın son günü
+        gunFarki += oncekiAySonu;
+        ayFarki--;
+        if (ayFarki < 0) {
+            ayFarki += 12;
+        }
+    }
+
+    const yasMs = bugun - dogumGunu;
+    const toplamGun = Math.floor(yasMs / (1000 * 60 * 60 * 24));
+
+    const sonrakiDogumGunu = new Date(bugun.getFullYear(), dogumGunu.getMonth(), dogumGunu.getDate());
+    if (sonrakiDogumGunu < bugun) {
+        sonrakiDogumGunu.setFullYear(sonrakiDogumGunu.getFullYear() + 1);
+    }
+    const kalanGun = Math.ceil((sonrakiDogumGunu - bugun) / (1000 * 60 * 60 * 24));
+
+    return {
+        yas: yas,
+        ay: ayFarki,
+        gun: gunFarki,
+        toplamGun: toplamGun,
+        kalanGun: kalanGun
+    };
+}
+
+hesaplaButton.addEventListener('click', function() {
+    const dogumTarihi = dogumTarihiInput.value;
+    if (!dogumTarihi) {
+        sonucDiv.textContent = "Lütfen bir doğum tarihi girin.";
+        return;
+    }
+
+    const sonuc = yasHesapla(dogumTarihi);
+    sonucDiv.innerHTML = `
+        Yaşınız: ${sonuc.yas} yıl, ${sonuc.ay} ay, ${sonuc.gun} gün<br>
+        Bugüne kadar ${sonuc.toplamGun} gün yaşamışsınız.<br>
+        Bir sonraki doğum gününüze ${sonuc.kalanGun} gün kaldı.
+    `;
+});</script>
+</body>
+</html>

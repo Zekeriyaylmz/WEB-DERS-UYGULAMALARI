@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tıklama Sayacı</title>
+    <style>
+        .tiklama-sayaci {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+
+<div class="tiklama-sayaci">
+    <h1>Tıklama Sayacı</h1>
+    <p>Butona tıklayın:</p>
+    <button id="tikla">Tıkla</button>
+    <p>Toplam Tıklama: <span id="toplamTiklama">0</span></p>
+    <button id="sifirla">Sıfırla</button>
+</div>
+
+<script>
+    const tiklaButton = document.getElementById('tikla');
+const toplamTiklamaSpan = document.getElementById('toplamTiklama');
+const sifirlaButton = document.getElementById('sifirla');
+let tiklamaSayisi = 0;
+
+tiklaButton.addEventListener('click', function() {
+    tiklamaSayisi++;
+    toplamTiklamaSpan.textContent = tiklamaSayisi;
+});
+
+sifirlaButton.addEventListener('click', function() {
+    tiklamaSayisi = 0;
+    toplamTiklamaSpan.textContent = 0;
+});
+</script>
+</body>
+</html>
